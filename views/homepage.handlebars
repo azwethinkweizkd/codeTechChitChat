@@ -3,3 +3,10 @@
     <li>{{user.name}}</li>
   {{/each}}
 </ul>
+<ul>
+  {{#each blog as |blog|}}
+    <li>{{blog.title}}<p>{{blog.content}}</p></li>
+  {{/each}}
+</ul>
+
+<script src="/js/homepage.js"></script>
