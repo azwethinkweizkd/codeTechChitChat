@@ -6,8 +6,9 @@ var faker = require("faker");
 
 // console.log(randomName, randomEmail, randomPassword);
 
-// console.log(
-//   faker.fake("{{name.lastName}}, {{name.firstName}} {{name.suffix}}")
-// );
+console.log(faker.fake("{{name.lastName}}"));
+console.log(faker.fake("{{name.lastName}}"));
+console.log(faker.fake("{{name.lastName}}"));
+console.log(faker.fake("{{name.lastName}}"));
 console.log(faker.fake("Title: {{lorem.word}} Content: {{lorem.paragraph}}"));
 console.log(faker.fake("Title: {{lorem.word}} Content: {{lorem.paragraphs}}"));

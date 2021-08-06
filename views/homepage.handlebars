@@ -1,12 +1,42 @@
-<ul>
-  {{#each users as |user|}}
-    <li>{{user.name}}</li>
-  {{/each}}
-</ul>
-<ul>
-  {{#each blog as |blog|}}
-    <li>{{blog.title}}<p>{{blog.content}}</p></li>
-  {{/each}}
-</ul>
+<header class="p-3 mb-2 bg-info text-white">
+  <ul class="nav container justify-content-center">
+    <li class="nav-item">
+      <a
+        class="nav-link active homeBtn text-white"
+        aria-current="page"
+        href="/homepage"
+      >Home</a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link dashboardBtn text-white"
+        href="/dashboard"
+      >Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link logoutBtn text-white" href="#">Logout</a>
+    </li>
+  </ul>
+  <h1 class="container justify-content-center">CodeTechChitChat</h1>
+</header>
 
-<script src="/js/homepage.js"></script>
+{{#each blog as |blog|}}
+  <div class="d-flex justify-content-md-center">
+    <div class="card col-6 justify-content-md-center">
+      <div class="card-header">
+        {{blog.title}}
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>
+            {{blog.content}}
+          </p>
+          <footer class="blockquote-footer">
+            {{user.user_name}}
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+{{/each}}

@@ -1,12 +1,16 @@
-const loginBtn = document.getElementById(".loginBtn");
+const logoutBtn = document.getElementById(".logoutBtn");
 const dashBtn = document.getElementById(".dashboardBtn");
+const homeBtn = document.querySelector(".homeBtn");
 
-loginBtn.addEventListener("click", function (event) {
+homeBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  document.location.replace("/login");
+  document.location.replace("/homepage");
 });
-
 dashBtn.addEventListener("click", function (event) {
   event.preventDefault();
   document.location.replace("/dashboard");
 });
+// logoutBtn.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   document.location.replace("/login");
+// });
