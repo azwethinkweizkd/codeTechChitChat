@@ -14,11 +14,20 @@ router.get("/homepage", async (req, res) => {
   try {
     const usersData = await User.findAll({});
     const users = usersData.map((user) => user.toJSON());
+    console.log(users);
     const blogData = await Blog.findAll({});
-    const blog = blogData.map((blog) => blog.toJSON());
+    const blogs = blogData.map((blog) => blog.toJSON());
+    blogs.forEach((blog) => {
+      users.forEach((user) => {
+        if (user.id === blog.user_id) {
+          blog.user_name = user.user_name;
+        }
+      });
+    });
+    console.log(blogs);
     res.render("homepage", {
       users,
-      blog,
+      blogs,
     });
   } catch (e) {
     res.status(400).json(e);

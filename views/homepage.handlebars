@@ -20,7 +20,7 @@
   <h1 class="container justify-content-center">CodeTechChitChat</h1>
 </header>
 
-{{#each blog as |blog|}}
+{{#each blogs as |blog|}}
   <div class="d-flex justify-content-md-center">
     <div class="card col-6 justify-content-md-center">
       <div class="card-header">
@@ -32,7 +32,7 @@
             {{blog.content}}
           </p>
           <footer class="blockquote-footer">
-            {{user.user_name}}
+            {{blog.user_name}}
           </footer>
         </blockquote>
       </div>
