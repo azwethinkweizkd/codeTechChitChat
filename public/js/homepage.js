@@ -1,11 +1,15 @@
 const dashBtn = document.getElementById("dashboardBtn");
 const homeBtn = document.getElementById("homeBtn");
 const logoutBtn = document.getElementById("logoutBtn");
+const replyBtn = document.querySelector(".replyBtn");
+const header = document.getElementById("myHeader");
+let sticky = header.offsetTop;
 
 homeBtn.addEventListener("click", function (event) {
   event.preventDefault();
   document.location.replace("/homepage");
 });
+
 dashBtn.addEventListener("click", function (event) {
   event.preventDefault();
   document.location.replace("/dashboard");
@@ -14,9 +18,6 @@ dashBtn.addEventListener("click", function (event) {
 window.onscroll = function () {
   myFunction();
 };
-
-let header = document.getElementById("myHeader");
-let sticky = header.offsetTop;
 
 function myFunction() {
   if (window.pageYOffset > sticky) {
@@ -38,4 +39,32 @@ const logoutFunc = async () => {
     alert(response.statusText);
   }
 };
+
 logoutBtn.addEventListener("click", logoutFunc);
+
+const replyHandler = async (event) => {
+  event.preventDefault();
+  const reply = document.getElementById("reply").value.trim();
+
+  const replyToBlog = await fetch("/api/reply/comment", {
+    method: "POST",
+    body: JSON.stringify({ reply }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (replyToBlog.ok) {
+    document.location.replace("/homepage");
+  } else {
+    alert("Failed to log in");
+  }
+};
+
+replyBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  document.location.replace("/homepage");
+});
+
+document
+  .querySelector(".replyToBlog")
+  .addEventListener("submit", replyHandler)
+  .value("");
