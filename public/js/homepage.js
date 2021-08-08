@@ -1,6 +1,6 @@
-const logoutBtn = document.getElementById("logoutBtn");
 const dashBtn = document.getElementById("dashboardBtn");
 const homeBtn = document.getElementById("homeBtn");
+const logoutBtn = document.getElementById("logoutBtn");
 
 homeBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -10,19 +10,16 @@ dashBtn.addEventListener("click", function (event) {
   event.preventDefault();
   document.location.replace("/dashboard");
 });
-logoutBtn.addEventListener(
-  "click",
-  (logout = (event) => {
-    event.preventDefault();
-    await fetch("/api/users/logout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    });
+const logoutFunc = async () => {
+  const response = await fetch("/api/users/logout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
 
-    if (logout.ok) {
-      document.location.replace("/");
-    } else {
-      alert(logout.statusText);
-    }
-  })
-);
+  if (response.ok) {
+    document.location.replace("/");
+  } else {
+    alert(response.statusText);
+  }
+};
+logoutBtn.addEventListener("click", logoutFunc);
