@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User, Blog, Reply } = require("../models");
-const loggedIn = require("../utils/loggedIn");
+const loggedIn = require("../utils/helpers");
 
 router.get("/", (req, res) => {
   if (req.session.logged_in) {
