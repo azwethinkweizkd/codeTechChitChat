@@ -19,11 +19,11 @@ Blog.init(
       type: DataTypes.STRING(1000),
       allowNull: false,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
+    user_uuid: {
+      type: DataTypes.UUID,
       references: {
         model: "user",
-        key: "id",
+        key: "uuid",
       },
     },
   },

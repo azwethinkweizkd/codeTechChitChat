@@ -1,0 +1,11 @@
+#postTitle {
+  width: 100%;
+  border: 1px solid #999999;
+  padding: 5px;
+}
+#postContent {
+  width: 100%;
+  height: 390px;
+  border: 1px solid #999999;
+  padding: 5px;
+}
