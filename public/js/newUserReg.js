@@ -1,9 +1,9 @@
-const newUser = document.querySelector("#userName").nodeValue.trim();
-const userEmail = document.querySelector("#email").nodeValue.trim();
-const userPW = document.querySelector("#password").nodeValue.trim();
-
 const newUserRegHandler = async (event) => {
   event.preventDefault();
+  const newUser = document.getElementById("userName").value.trim();
+  const userEmail = document.getElementById("email").value.trim();
+  const userPW = document.getElementById("password").value.trim();
+  console.log(newUser, userEmail, userPW);
   if (newUser && userEmail && userPW) {
     const newUserStore = await fetch("/api/users/register", {
       method: "POST",
@@ -13,7 +13,7 @@ const newUserRegHandler = async (event) => {
 
     console.log(newUserStore);
 
-    if (response.ok) {
+    if (newUserStore.ok) {
       document.location.replace("/homepage");
     } else {
       alert("Failed to register");

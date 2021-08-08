@@ -1,5 +1,5 @@
 const logoutBtn = document.getElementById(".logoutBtn");
-const dashBtn = document.getElementById(".dashboardBtn");
+const dashBtn = document.getElementById("dashboardBtn");
 const homeBtn = document.querySelector(".homeBtn");
 
 homeBtn.addEventListener("click", function (event) {

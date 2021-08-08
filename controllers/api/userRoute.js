@@ -3,16 +3,15 @@ const { User } = require("../../models");
 
 router.post("/register", async (req, res) => {
   try {
-    const newUserData = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
+    const newUserData = await User.create(req.body);
+    req.session.save(() => {
+      req.session.user_id = newUserData.id;
+      req.session.logged_in = true;
+
+      res.json({ user: newUserData, message: "You are now logged in!" });
     });
-    if (newUserData) {
-      return res.redirect("/homepage");
-    }
   } catch (e) {
-    res.json(401).json({ message: "Bad Request" });
+    res.json(401).json(e);
   }
 });
 

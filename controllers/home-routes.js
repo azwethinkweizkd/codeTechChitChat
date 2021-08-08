@@ -35,6 +35,11 @@ router.get("/homepage", async (req, res) => {
 });
 
 router.get("/register", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/homepage");
+    return;
+  }
+
   res.render("register");
 });
 
