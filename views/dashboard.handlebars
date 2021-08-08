@@ -27,24 +27,28 @@
 <div
   class="container justify-content-center col-6 border border-primary mx-auto"
 >
-  <form class="mx-auto">
+  <form class="mx-auto newPostForm">
     <div class="form-group col-12">
       <label>Title of Post</label>
       <input
         type="text"
         class="form-control"
-        id="formGroupExampleInput"
+        id="postTitle"
         placeholder="Post Title"
       />
     </div>
-    <div class="form-group col-12">
+    <div class="form-group col-12 mb-2">
       <label>Comment...</label>
       <input
         type="text"
         class="form-control"
-        id="formGroupExampleInput2"
+        id="postContent"
         placeholder="Comment Here"
       />
     </div>
+    <button type="submit" id="postBlogBtn" class="btn btn-primary">
+      Post
+    </button>
   </form>
 </div>
+<script src="/js/newPost.js"></script>
