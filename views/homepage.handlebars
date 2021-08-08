@@ -42,11 +42,13 @@
             <p>
               {{blog.content}}
             </p>
-            <footer class="blockquote-footer">
+            <footer class="blockquote-footer mb-3">
               {{blog.user_name}}
             </footer>
           </blockquote>
-          <a href="/replies">See replies to this post.....</a>
+          <a class="text-dark font-weight-bold replies" href="/discussion">Click
+            here to see replies to this post</a>
+          <p>{{blog.comment}}{{reply.user_name}}</p>
         </div>
       </div>
     </div>

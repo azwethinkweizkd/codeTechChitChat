@@ -40,3 +40,7 @@ body {
 .sticky + .content {
   padding-top: 132px;
 }
+
+.replies {
+  text-decoration: none;
+}
