@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const User = require("../models/User");
-const Blog = require("../models/Blog");
+const { User, Blog } = require("../models");
 
 router.get("/", (req, res) => {
   if (req.session.logged_in) {
@@ -20,7 +19,7 @@ router.get("/homepage", async (req, res) => {
     blogs.forEach((blog) => {
       users.forEach((user) => {
         if (user.id === blog.user_id) {
-          blog.user_name = user.user_name;
+          blog.user_name === user.user_name;
         }
       });
     });
@@ -33,6 +32,15 @@ router.get("/homepage", async (req, res) => {
     res.status(400).json(e);
   }
 });
+
+// router.get("/login", (req, res) => {
+//   if (req.session.logged_in) {
+//     res.redirect("/homepage");
+//     return;
+//   }
+
+//   res.render("login");
+// });
 
 router.get("/register", (req, res) => {
   if (req.session.logged_in) {
