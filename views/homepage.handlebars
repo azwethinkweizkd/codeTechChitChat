@@ -1,4 +1,9 @@
-<header class="p-3 mb-2 bg-info text-white">
+<div class="top-container">
+  <h1 class="container text-center">CodeTechChitChat</h1>
+  <p></p>
+</div>
+
+<div class="p-3 mb-3 header" id="myHeader">
   <ul class="nav container justify-content-center">
     <li class="nav-item">
       <a
@@ -23,29 +28,33 @@
       >Logout</a>
     </li>
   </ul>
-  <h1 class="container justify-content-center">CodeTechChitChat</h1>
-</header>
+</div>
+<div class="content">
+  {{#each blogs as |blog|}}
 
-{{#each blogs as |blog|}}
-  <div class="d-flex justify-content-md-center">
-    <div class="card col-6 justify-content-md-center">
-      <div class="card-header">
-        {{blog.title}}
-      </div>
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <p>
-            {{blog.content}}
-          </p>
-          <footer class="blockquote-footer">
-            {{blog.user_name}}
-          </footer>
-        </blockquote>
-        <a href="/replies">See replies to this post.....</a>
+    <div class="d-flex justify-content-md-center mx-auto py-3">
+      <div class="card col-6 justify-content-md-center">
+        <div class="card-header">
+          {{blog.title}}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>
+              {{blog.content}}
+            </p>
+            <footer class="blockquote-footer">
+              {{blog.user_name}}
+            </footer>
+          </blockquote>
+          <a href="/replies">See replies to this post.....</a>
+        </div>
       </div>
     </div>
-  </div>
 
-{{/each}}
+  {{/each}}
+</div>
+
+<footer class="text-center">CodeTechChitChat &copy; - The best place on the
+  internet to discuss coding tech</footer>
 
 <script src="/js/homepage.js"></script>

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
-const { v4: uuidv4 } = require("uuid");
+// const { v4: uuidv4 } = require("uuid");
 
 router.get("/", async (req, res) => {
   try {
@@ -60,13 +60,13 @@ router.post("/register", (req, res) => {
   console.log(req.body);
   try {
     const newUserData = User.create({
-      // user_name: req.body.newUser,
-      // email: req.body.userEmail,
-      // password: req.body.userPW,
-      id: uuidv4(),
-      user_name: req.body.user_name,
-      email: req.body.email,
-      password: req.body.password,
+      user_name: req.body.newUser,
+      email: req.body.userEmail,
+      password: req.body.userPW,
+      // id: uuidv4(),
+      // user_name: req.body.user_name,
+      // email: req.body.email,
+      // password: req.body.password,
     });
     // console.log(newUserData);
     req.session.save(() => {
@@ -81,7 +81,7 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.logged_in === true) {
     req.session.destroy(() => {
       res.status(204).end();
     });
