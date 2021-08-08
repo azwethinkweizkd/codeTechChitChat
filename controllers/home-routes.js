@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Blog } = require("../models");
+const loggedIn = require("../utils/loggedIn");
 
 router.get("/", (req, res) => {
   if (req.session.logged_in) {
@@ -9,21 +10,21 @@ router.get("/", (req, res) => {
   res.render("login");
 });
 
-router.get("/homepage", async (req, res) => {
+router.get("/homepage", loggedIn, async (req, res) => {
   try {
     const usersData = await User.findAll({});
     const users = usersData.map((user) => user.toJSON());
-    console.log(users);
+    // console.log(users);
     const blogData = await Blog.findAll({});
     const blogs = blogData.map((blog) => blog.toJSON());
     blogs.forEach((blog) => {
       users.forEach((user) => {
         if (user.id === blog.user_id) {
-          blog.user_name === user.user_name;
+          blog.user_name = user.user_name;
         }
       });
     });
-    console.log(blogs);
+    // console.log(blogs);
     res.render("homepage", {
       users,
       blogs,
@@ -32,15 +33,6 @@ router.get("/homepage", async (req, res) => {
     res.status(400).json(e);
   }
 });
-
-// router.get("/login", (req, res) => {
-//   if (req.session.logged_in) {
-//     res.redirect("/homepage");
-//     return;
-//   }
-
-//   res.render("login");
-// });
 
 router.get("/register", (req, res) => {
   if (req.session.logged_in) {
@@ -51,7 +43,7 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", loggedIn, (req, res) => {
   res.render("dashboard");
 });
 
