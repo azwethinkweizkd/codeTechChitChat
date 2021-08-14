@@ -55,7 +55,7 @@ const replyHandler = async (event) => {
   if (replyToBlog.ok) {
     document.location.replace("/homepage");
   } else {
-    alert("Failed to log in");
+    alert("Failed to write reply");
   }
 };
 

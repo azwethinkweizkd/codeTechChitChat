@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Blog } = require("../../models");
 
-router.post("/post", async (req, res) => {
+router.post("/", async (req, res) => {
   // console.log(req.session.user_id);
   // console.log(req.body);
   // console.log(req.body.postTitle);
