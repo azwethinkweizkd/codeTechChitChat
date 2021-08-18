@@ -57,11 +57,11 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const newUserData = await User.create(req.body);
-    console.log({ newUserData });
-    console.log(newUserData.id);
+    // console.log({ newUserData });
+    // console.log(newUserData.id);
     req.session.save(() => {
       req.session.user_id = newUserData.id;
       req.session.logged_in = true;
