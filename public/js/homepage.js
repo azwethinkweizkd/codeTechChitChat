@@ -43,28 +43,24 @@ const logoutFunc = async () => {
 logoutBtn.addEventListener("click", logoutFunc);
 
 const replyHandler = async (event) => {
+  console.log("hello");
   event.preventDefault();
   const reply = document.getElementById("reply").value.trim();
+  const blogId = document.getElementById("postBlogBtn").getAttribute("blogId");
 
-  const replyToBlog = await fetch("/api/reply/comment", {
+  console.log(reply, blogId);
+
+  const replyToBlog = await fetch("/api/reply/", {
     method: "POST",
-    body: JSON.stringify({ reply }),
+    body: JSON.stringify({ reply, blogId }),
     headers: { "Content-Type": "application/json" },
   });
 
   if (replyToBlog.ok) {
     document.location.replace("/homepage");
   } else {
-    alert("Failed to write reply");
+    alert("Failed to log in");
   }
 };
 
-replyBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  document.location.replace("/homepage");
-});
-
-document
-  .querySelector(".replyToBlog")
-  .addEventListener("submit", replyHandler)
-  .value("");
+document.getElementById("replyToBlog").addEventListener("submit", replyHandler);

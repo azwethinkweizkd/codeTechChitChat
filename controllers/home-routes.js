@@ -19,48 +19,23 @@ router.get("/register", (req, res) => {
 });
 router.get("/homepage", loggedIn, async (req, res) => {
   try {
-    // const blogData = await Blog.findAll({});
-    // const blogs = blogData.map((blog) => blog.toJSON());
-
-    // // console.log(blogData);
-    // // console.log(blogs);
-    // const usersData = await User.findAll({});
-    // const users = usersData.map((user) => user.toJSON());
-    // const replies = await Reply.findAll({});
-    // // console.log(replies);
-    // const reply = replies.map((reply) => reply.toJSON());
-    // // console.log(reply);
-    // // console.log(users);
-    // blogs.forEach((blog) => {
-    //   users.forEach((user) => {
-    //     if (user.id === blog.user_id) {
-    //       blog.user_name = user.user_name;
-    //     }
-    //   });
-    //   reply.forEach((reply) => {
-    //     if (blog.id === reply.blog_id) {
-    //       blog.comment = reply.comment;
-    //     }
-    //   });
-    // });
-    // // reply.forEach((reply) => {
-    // //   users.forEach((user) => {
-    // //     if (user.id === reply.user_id) {
-    // //       blog.replyUsername = user.user_name;
-    // //     }
-    // //   });
-    // // });
     const blogData = await Blog.findAll({
       include: [{ model: User }, { model: Reply }],
     });
+
     // const replyData = await Reply.findAll({
-    //   include: [{ model: Blog }],
+    //   include: [{ model: User }],
     // });
     // console.log(blogData[0].dataValues);
-    console.log(blogData[0].dataValues.blog_replies[0].comment);
+    console.log(blogData[0].dataValues.blog_replies[0]);
+    // console.log(replyData[0].dataValues);
+
     const blogs = blogData.map((blog) => blog.toJSON());
+    // const replys = replyData.map((reply) => reply.toJSON());
+    // console.log(replys);
     res.status(200).render("homepage", {
       blogs,
+      // replys,
     });
   } catch (e) {
     res.status(400).json(e);

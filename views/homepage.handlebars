@@ -37,7 +37,7 @@
         <div class="card-header">
           <h1>{{blog.title}}</h1>
         </div>
-        <div class="card-body">
+        <div class="card-body" id>
           <blockquote class="blockquote mb-3">
             <p>
               {{blog.content}}
@@ -50,11 +50,12 @@
             here to see replies to this post</a> }}
           <form
             {{! action="replyForm" }}
-            class="border-bottom border-dark replyToBlog"
+            class="mx-auto border-bottom border-dark"
+            id="replyToBlog"
           >
             <p>Write your comment below:</p>
             <textarea
-              class="mb-3 replyToBlog"
+              class="mb-3 replyToBlog input"
               name="replyToBlog"
               id="reply"
               cols="88"
@@ -64,12 +65,18 @@
               type="submit"
               id="postBlogBtn"
               class="mb-3 btn btn-primary replyBtn"
+              blogId={{blog.id}}
             >
               Reply
             </button>
           </form>
           <h3 class="text-info">Post Comments</h3>
-          <p></p>
+          {{#each blog.blog_replies as |reply|}}
+            <p>{{reply.comment}}</p>
+            <footer class="blockquote-footer mb-3">
+              {{reply.user_id}}
+            </footer>
+          {{/each}}
         </div>
       </div>
     </div>
