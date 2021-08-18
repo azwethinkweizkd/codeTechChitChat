@@ -18,7 +18,7 @@ Installation of this application will require one to transfer all files to a wor
 
 [codeTechChitChat - Kevin Devlin](https://github.com/azwethinkweizkd/codeTechChitChat)
 
-Once files have been save into a working directory a one more step will need to take place, and that is to install node_modules. The node_modules will include: dotenv, express, mysql12, sequelize, faker, express-session, express-handlebars, bcrypt, connect-session-sequelize"
+Once files have been save into a working directory a one more step will need to take place, and that is to install node_modules. The node_modules will include: dotenv, express, mysql12, sequelize, faker, express-session, express-handlebars, bcrypt, connect-session-sequelize.
 
 To install the node_modules properly one will need to type in the terminal under the current working directory for the application:
 
@@ -30,7 +30,13 @@ Make sure that you are in the directory that these files have been saved to. Oth
 
 ## Usage
 
-Usage
+To use this app go to the deployed application on Heroku!
+
+Below is a link to the blog:
+
+[codeTechChitChat](https://code-tech-chit-chat.herokuapp.com/)
+
+![codeTechChitChat Screenshot](/assets/gif/heroku-screenshot.gif)
 
 ## Contribution
 
