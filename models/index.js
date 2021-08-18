@@ -17,4 +17,14 @@ Reply.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
+User.hasMany(Blog, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
+User.hasMany(Reply, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
 module.exports = { User, Blog, Reply };
