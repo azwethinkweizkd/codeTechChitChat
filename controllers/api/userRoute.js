@@ -56,19 +56,12 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
   console.log(req.body);
   try {
-    const newUserData = User.create({
-      user_name: req.body.newUser,
-      email: req.body.userEmail,
-      password: req.body.userPW,
-      // id: uuidv4(),
-      // user_name: req.body.user_name,
-      // email: req.body.email,
-      // password: req.body.password,
-    });
-    // console.log(newUserData);
+    const newUserData = await User.create(req.body);
+    console.log({ newUserData });
+    console.log(newUserData.id);
     req.session.save(() => {
       req.session.user_id = newUserData.id;
       req.session.logged_in = true;

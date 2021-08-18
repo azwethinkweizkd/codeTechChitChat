@@ -1,16 +1,16 @@
 const newUserRegHandler = async (event) => {
   event.preventDefault();
-  const newUser = document.getElementById("userName").value.trim();
-  const userEmail = document.getElementById("email").value.trim();
-  const userPW = document.getElementById("password").value.trim();
-  if (userPW.length < 8) {
+  const user_name = document.getElementById("userName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+  if (password.length < 8) {
     alert("Please make your password more that 8 characters long or more");
     return newUserRegHandler;
   }
-  if (newUser && userEmail && userPW) {
+  if (user_name && email && password) {
     const newUserStore = await fetch("/api/users/register", {
       method: "POST",
-      body: JSON.stringify({ newUser, userEmail, userPW }),
+      body: JSON.stringify({ user_name, email, password }),
       headers: { "Content-Type": "application/json" },
     });
 
