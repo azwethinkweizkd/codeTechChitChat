@@ -2,14 +2,9 @@ const dashBtn = document.getElementById("dashboardBtn");
 const homeBtn = document.getElementById("homeBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 const replyBtn = document.querySelector(".replyBtn");
-const userReply = document.getElementById("reply");
-userReply.addEventListener("change", updateValue);
+
 const header = document.getElementById("myHeader");
 let sticky = header.offsetTop;
-let replyToPost = "";
-function updateValue(e) {
-  replyToPost = e.target.value;
-}
 
 homeBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -49,15 +44,14 @@ const logoutFunc = async () => {
 logoutBtn.addEventListener("click", logoutFunc);
 
 const replyHandler = async (event) => {
-  // if (event.target.matches("postBlogBtn")) {
-  //   console.log("hello");
-  // }
-
+  console.log("replyHandle");
+  let currId = event.target.getAttribute("blogId");
+  console.log(currId);
   event.preventDefault();
-  const reply = replyToPost;
-  const blogId = document.getElementById("postBlogBtn").getAttribute("blogId");
+  const reply = document.querySelector(".reply").value.trim();
+  const blogId = document.querySelector(".replyBtn").getAttribute("blogId");
 
-  // console.log(reply, blogId);
+  console.log(reply, blogId);
 
   const replyToBlog = await fetch("/api/reply/", {
     method: "POST",
@@ -72,4 +66,4 @@ const replyHandler = async (event) => {
   }
 };
 
-document.getElementById("replyToBlog").addEventListener("submit", replyHandler);
+document.querySelector(".replyToBlog").addEventListener("submit", replyHandler);
