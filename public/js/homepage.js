@@ -44,10 +44,12 @@ const logoutFunc = async () => {
 logoutBtn.addEventListener("click", logoutFunc);
 
 const replyHandler = async (event) => {
+  event.preventDefault();
+  event.stopPropagation();
   console.log("replyHandle");
   let currId = event.target.getAttribute("blogId");
   console.log(currId);
-  event.preventDefault();
+
   const reply = document.querySelector(".reply").value.trim();
   const blogId = document.querySelector(".replyBtn").getAttribute("blogId");
 

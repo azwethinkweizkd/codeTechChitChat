@@ -45,10 +45,7 @@
               {{blog.user.user_name}}
             </footer>
           </blockquote>
-          {{! <a class="text-dark font-weight-bold replies" href="/discussion">Click
-            here to see replies to this post</a> }}
           <form
-            {{! action="replyForm" }}
             class="mx-auto border-bottom border-dark replyToBlog"
             blogId={{blog.id}}
           >
@@ -56,8 +53,6 @@
             <textarea
               class="mb-3 reply input rounded txta"
               name="replyToBlog"
-              {{! cols="88"
-              rows="2" }}
             ></textarea>
             <button
               type="submit"
