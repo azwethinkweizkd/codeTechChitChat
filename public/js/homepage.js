@@ -1,8 +1,6 @@
 const dashBtn = document.getElementById("dashboardBtn");
 const homeBtn = document.getElementById("homeBtn");
 const logoutBtn = document.getElementById("logoutBtn");
-const replyBtn = document.querySelector(".replyBtn");
-
 const header = document.getElementById("myHeader");
 let sticky = header.offsetTop;
 
